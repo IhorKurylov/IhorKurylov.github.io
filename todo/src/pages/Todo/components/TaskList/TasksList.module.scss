@@ -1,0 +1,43 @@
+.container{
+  width: 40%;
+}
+.containerDisabled{
+  pointer-events: none;
+}
+.headerTitle{
+  text-align: center;
+}
+
+.listContainer{
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: 15px;
+}
+.counter{
+  font-size: 16px;
+  font-weight: 600;
+  margin: 15px;
+}
+
+.controls, .controlsAbort{
+  line-height: 40px;
+  text-align: center;
+  background-color: #6d6db0;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  border: 1px solid #6d6db0;
+  cursor: pointer;
+}
+
+.controls:hover{
+  background-color: #3388ea;
+}
+
+.controlsAbort:hover{
+  background-color: #ce313f;
+}
+.controlsAbort{
+  background-color: #ec3646;
+}

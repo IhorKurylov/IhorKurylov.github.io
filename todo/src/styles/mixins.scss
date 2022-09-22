@@ -1,0 +1,10 @@
+@mixin flexBetweenStart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+@mixin flexStartCenter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
