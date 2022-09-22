@@ -5,6 +5,8 @@ import TasksList from "./components/TaskList/TasksList";
 import { defaultTasksList } from "../../mockData/defaultTasksList";
 import { Status, Task } from "../../interfaces/todoList.interface";
 import EditTask from "./components/EditTask/EditTask";
+//@ts-ignore
+import { v4 as uuidv4 } from "uuid";
 
 const TodoContainer = () => {
   const tasksList = encryptStorage.getItem("tasks");
@@ -14,7 +16,6 @@ const TodoContainer = () => {
   const [editItem, setEditItem] = useState<Task>();
   const [editIndex, setEditIndex] = useState<number>(-1);
   useEffect(() => {
-    console.log("here");
     if (!tasksList) {
       encryptStorage.setItem("tasks", defaultTasksList);
       setTasks(defaultTasksList);
@@ -24,7 +25,6 @@ const TodoContainer = () => {
   }, []);
   const onSubtaskChange = (e: any, taskIndex: number, subtaskIndex: number) => {
     // @ts-ignore
-    const updatedTask = tasks[taskIndex];
     const updatedTasks = tasks.map((item, index) => {
       if (index !== taskIndex) {
         return item;
@@ -84,16 +84,46 @@ const TodoContainer = () => {
   };
 
   const handleEditItem = (taskIndex: number) => {
-    console.log("edit");
     setEditItem(tasks[taskIndex]);
     setEditMode(true);
+    setEditIndex(taskIndex);
   };
-
+  const handleSaveEditing = (task: Task) => {
+    const updatedTasks = tasks.map((item, index) => {
+      if (index !== editIndex) {
+        return item;
+      } else {
+        return task;
+      }
+    });
+    setTasks(updatedTasks);
+    encryptStorage.setItem("tasks", updatedTasks);
+    setEditIndex(-1);
+    setEditMode(false);
+  };
+  const handleAddTask = () => {
+    setAddMode(true);
+    setEditItem({
+      title: "",
+      id: uuidv4(),
+      description: "",
+      status: 0,
+      subtasks: [],
+    });
+  };
+  const handleCreateTask = (task: Task) => {
+    const updatedTasks = tasks.map((i) => i).concat(task);
+    setTasks(updatedTasks);
+    encryptStorage.setItem("tasks", updatedTasks);
+    setAddMode(false);
+  };
   return (
     <div className={styles.container}>
       <h1 className={styles.headerTitle}>To Do List Tracker</h1>
       <main className={styles.main}>
         <TasksList
+          editIndex={editIndex}
+          handleAddTask={handleAddTask}
           deleteTask={deleteTask}
           editMode={editMode}
           addMode={addMode}
@@ -103,7 +133,15 @@ const TodoContainer = () => {
           onTaskChange={onTaskChange}
           handleEditItem={handleEditItem}
         />
-        <EditTask editMode={editMode} addMode={addMode} editItem={editItem} />
+        <EditTask
+          editMode={editMode}
+          addMode={addMode}
+          editItem={editItem}
+          setEditMode={setEditMode}
+          setAddMode={setAddMode}
+          handleSave={handleSaveEditing}
+          handleCreateTask={handleCreateTask}
+        />
       </main>
     </div>
   );

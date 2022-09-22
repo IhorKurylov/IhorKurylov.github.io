@@ -1,10 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import "./App.css";
-import "antd/dist/antd.min.css";
 import TodoContainer from "./pages/Todo/TodoContainer";
 
-function App() {
+const App: FC = () => {
   return <TodoContainer />;
-}
+};
 
 export default App;

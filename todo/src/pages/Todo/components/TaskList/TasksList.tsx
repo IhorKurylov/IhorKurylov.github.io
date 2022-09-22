@@ -10,8 +10,10 @@ interface Props {
   deleteTask: (i: number) => void;
   handleEditItem: (i: number) => void;
   editMode: boolean;
+  editIndex: number;
   addMode: boolean;
   setAddMode: (b: boolean) => void;
+  handleAddTask: () => void;
 }
 const TasksList = ({
   list,
@@ -22,10 +24,9 @@ const TasksList = ({
   setAddMode,
   deleteTask,
   handleEditItem,
+  handleAddTask,
+  editIndex,
 }: Props) => {
-  const handleCheck = () => {
-    console.log("change");
-  };
   const incompletedTasks = () => {
     let count = 0;
     list.forEach((task) => task.status === Status.inList && count++);
@@ -36,7 +37,7 @@ const TasksList = ({
       <h1 className={styles.headerTitle}>To Do List</h1>
       <div className={styles.listContainer}>
         {!addMode && !editMode ? (
-          <p className={styles.controls} onClick={() => setAddMode(true)}>
+          <p className={styles.controls} onClick={handleAddTask}>
             Add new Task
           </p>
         ) : (
@@ -54,6 +55,9 @@ const TasksList = ({
           {list &&
             list?.map((task, index) => (
               <Card
+                editMode={editMode}
+                addMode={addMode}
+                editIndex={editIndex}
                 task={task}
                 taskIndex={index}
                 key={task.id}
