@@ -93,7 +93,12 @@ const TodoContainer = () => {
       if (index !== editIndex) {
         return item;
       } else {
-        return task;
+        const checkedTask = {
+          ...task,
+          //@ts-ignore
+          subtasks: task?.subtasks.filter((item) => item.title !== ""),
+        };
+        return checkedTask;
       }
     });
     setTasks(updatedTasks);
