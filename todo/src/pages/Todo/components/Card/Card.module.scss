@@ -36,6 +36,7 @@
 
 .subtask, .subtaskDone{
   font-size: 13px;
+  @include flexStartCenter;
 }
 
 .controls{

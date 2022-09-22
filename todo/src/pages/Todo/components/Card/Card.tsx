@@ -25,7 +25,10 @@ const Card = ({
   addMode,
 }: Props) => {
   return (
-    <div className={editIndex !== taskIndex && editMode ? styles.blur : ""}>
+    <div
+      className={editIndex !== taskIndex && editMode ? styles.blur : ""}
+      data-testid={task.id}
+    >
       <div
         className={
           task.status === Status.inList
@@ -65,7 +68,7 @@ const Card = ({
                   onChange={(e) => onSubtaskChange(e, taskIndex, index)}
                 />
                 <span key={subtask.id} className={styles.title}>
-                  {subtask.title}
+                  <small>{subtask.title}</small>
                 </span>
               </div>
             ))}

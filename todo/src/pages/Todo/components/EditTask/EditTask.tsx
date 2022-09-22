@@ -72,7 +72,7 @@ const EditTask = ({
 
   // @ts-ignore
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="EditTask">
       {inputValues && (editMode || addMode) && (
         <>
           <h1 className={styles.headerTitle}>
@@ -107,15 +107,16 @@ const EditTask = ({
               <>
                 <p className={styles.taskTitle}>Subtasks</p>
                 {inputValues?.subtasks.map((subtask, index) => (
-                  <>
+                  <div key={subtask.id}>
                     <p className={styles.taskTitle}>Title</p>
                     <Input
                       allowClear
                       placeholder="Subtask title"
                       value={subtask?.title}
                       onChange={(e: any) => editSubtask(index, e)}
+
                     />
-                  </>
+                  </div>
                 ))}
               </>
             )}

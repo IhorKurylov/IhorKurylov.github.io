@@ -33,7 +33,7 @@ const TasksList = ({
     return count;
   };
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="taskList">
       <h1 className={styles.headerTitle}>To Do List</h1>
       <div className={styles.listContainer}>
         {!addMode && !editMode ? (

@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card snapshot match 1`] = `
+<div
+  className="blur"
+  data-testid="fa032c90-0222-48e4-983b-06ab03eeecd3"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="controls"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Edit
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Delete
+      </button>
+    </div>
+    <div
+      className="header"
+    >
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <span
+        className="title"
+      >
+        Tasks creation management
+      </span>
+    </div>
+    <div
+      className="description"
+    >
+      <span>
+        Add and remove tasks
+      </span>
+    </div>
+    <div
+      className="subtasksContainer"
+    >
+      <div
+        className="subtask"
+      >
+        <input
+          checked={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="title"
+        >
+          <small>
+            Add tasks
+          </small>
+        </span>
+      </div>
+      <div
+        className="subtask"
+      >
+        <input
+          checked={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <span
+          className="title"
+        >
+          <small>
+            Remove tasks
+          </small>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
