@@ -114,7 +114,6 @@ const EditTask = ({
                       placeholder="Subtask title"
                       value={subtask?.title}
                       onChange={(e: any) => editSubtask(index, e)}
-
                     />
                   </div>
                 ))}
